@@ -40,3 +40,43 @@ const operate = (firstNum, operator, secondNum) => {
 // console.log(operate(1, "+", 2));
 // console.log(operate(10, "/", 2));
 // console.log(operate(2, "5", 2));
+
+// ----- UPDATING DISPLAY LOGIC -----
+let displayValue = "0";
+
+const display = document.querySelector(".display");
+const numberButtons = document.querySelectorAll(".btn-number");
+
+const updateDisplay = () => {
+    display.textContent = displayValue;
+}
+
+numberButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const digit = button.textContent;
+        handleNumberClick(digit);
+    });
+});
+
+const handleNumberClick = (digit) => {
+    // if current value is "0" and i click another number which is not a dot
+    // replace the "0" instead of adding to it
+    if (displayValue === "0" && digit !== ".") {
+        displayValue = digit;
+    } else {
+        // prevent typing multiple dots
+        if (digit === "." && displayValue.includes(".")) {
+            return;
+        }
+        displayValue += digit;
+    }
+    updateDisplay();
+}
+
+// ----- CLEAR BUTTON LOGIC -----
+const clearButton = document.querySelector(".clear-btn");
+
+clearButton.addEventListener("click", () => {
+    displayValue = "0";
+    updateDisplay();
+});
