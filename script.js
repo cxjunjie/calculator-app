@@ -39,4 +39,4 @@ const operate = (firstNum, operator, secondNum) => {
 
 // console.log(operate(1, "+", 2));
 // console.log(operate(10, "/", 2));
-console.log(operate(2, "5", 2));
+// console.log(operate(2, "5", 2));
